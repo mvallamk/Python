@@ -1,0 +1,35 @@
+import java.util.*;
+ 
+public class Solution {
+    public static int solution(int[] A)
+    {
+        int count=0;
+        int a=0;
+        int ans=0;
+        int x=Integer.MIN_VALUE;
+        if(A.length<3)
+            return A.length;
+        if(A[0]==A[2] && A.length==3)
+            {
+                return 3;
+            }
+        for(int i=0;i<A.length-3;i++)
+        {      
+            if(A[i]==A[i+2] && A[i+1]==A[i+3])
+            count++;
+            else if(A[i]==A[i+2] && A[i+1]!=A[i+3])
+            {
+                count=0;
+            }
+            else
+            {
+                a=count;
+                count=0;
+                x=(a>x)?a:x;
+            }
+        }
+        if(x==Integer.MIN_VALUE)
+        return 0;
+        return (x+3);
+    }
+}
