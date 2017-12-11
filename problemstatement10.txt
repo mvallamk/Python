@@ -1,0 +1,48 @@
+import java.util.*;
+public class Solution 
+    { 
+        public static int solution(int[] A, int[] B, int M, int X, int Y)
+        {
+            int b=0;
+            int c=0;
+            int count=0;
+            int x=0;
+            int stop=0;
+            int stop2=0;
+            int j=0;
+            Set<Integer> floor = new HashSet<Integer>();
+            for(int i=0;i<A.length;i++)
+            {
+                c+=A[i];
+                b++;
+                if(b<=X && c<Y)
+                {
+                floor.add(B[i]);
+                stop=floor.size();
+                }
+                else if(b>X || c>Y)
+                {
+                    c=0;
+                    b=0;
+                    floor.clear();
+                    x++;
+                    i--;
+                    stop2+=stop;
+                }
+                if(b<=X && c<Y && i==(A.length-1))
+                {
+                    x++;
+                    stop2+=stop;
+                }
+            }
+            return (stop2+x);
+        }
+         public static void main(String[] args)
+    {
+        int[] n={40,40,100,80,20};
+        int[] m={3,3,2,2,3};
+        System.out.println(solution(n,m,5,3,200));
+        
+    }
+        
+    }
